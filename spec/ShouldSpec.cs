@@ -37,4 +37,23 @@ public class HelperMethodsSpec {
 	[Test] public void ShouldBeFalse() { false.ShouldBeFalse(); }
 
 	[Test] public void ShouldBeTrue() { true.ShouldBeTrue(); }
+
+    [Test]
+    public void ShouldBeEquivalent_TEnum()
+    {
+        new string[] { "foo", "bar" }.ShouldBeEquivalentTo(new string[] { "foo", "bar" });
+    }
+
+    [Test]
+    public void ShouldBeEquivalent_RandomOrder()
+    {
+        new string[] { "foo", "bar" }.ShouldBeEquivalentTo(new string[] { "bar", "foo" });
+    }
+
+    [Test]
+    [ExpectedException(typeof (AssertionException))]
+    public void ShouldBeEquivalent_NotEquivalentEnums()
+    {
+        new string[] { "foo", "bar" }.ShouldBeEquivalentTo(new string[] { "foo", "bar", "buz" });
+    }
 }

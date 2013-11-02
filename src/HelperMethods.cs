@@ -42,5 +42,10 @@ namespace NUnit.Framework {
 		public static void ShouldBeTrue(this bool b) {
 			b.Should(Be.True);
 		}
+
+        public static void ShouldBeEquivalentTo<T>(this IEnumerable<T> source, IEnumerable<T> expected)
+        {
+            CollectionAssert.AreEquivalent(expected, source);
+        }
 	}
 }
